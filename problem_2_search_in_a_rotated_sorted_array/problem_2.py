@@ -8,6 +8,12 @@ def rotated_array_search(input_list, number):
        int: Index or -1
     """
 
+    if len(input_list) == 0:
+        return -1
+
+    if len(input_list) == 1:
+        return 0 if input_list[0] == number else -1
+
     right_end_index = len(input_list) - 1
     left_end_index = right_end_index // 2
     right_start_index = left_end_index + 1
@@ -66,6 +72,12 @@ def test_function(test_case):
 
 
 def test_rotated_array_search():
+    assert rotated_array_search([], 2) == -1
+    test_function([[], 2])
+    assert rotated_array_search([0], 1) == -1
+    test_function([[0], 1])
+    assert rotated_array_search([0], 0) == 0
+    test_function([[0], 0])
     assert rotated_array_search([2, 1], 2) == 0
     test_function([[2, 1], 2])
     assert rotated_array_search([2, 1], 1) == 1
